@@ -1,0 +1,16 @@
+# BhoomiRakshak backend — unified Convective Nowcast + AI-GIS Relocation platform
+fastapi==0.115.6
+uvicorn==0.34.0
+numpy>=1.26
+opencv-python-headless==4.10.0.84
+scikit-image==0.24.0
+shapely>=2.0.6
+requests==2.31.0
+pydantic>=2.10.4
+websockets==14.1
+sqlalchemy>=2.0.0
+pandas>=2.2.0
+geopandas>=1.0.0
+reportlab>=4.0.0
+pyogrio>=0.8.0
+pyproj>=3.7.0

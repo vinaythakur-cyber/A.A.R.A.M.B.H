@@ -1,0 +1,162 @@
+/* BhoomiRakshak design system — Apple-grade dark aesthetic.
+   Single source of truth for landing page + ops dashboard. */
+
+:root {
+  /* ---- cinematic atmospheric storm palette (matching rain-on-glass reference) ---- */
+  --br-bg: #030610;
+  --br-bg-2: #070e1c;
+  --br-bg-3: #0c1628;
+  --br-text: #f0f6fc;
+  --br-muted: #94a3b8;
+  --br-muted-2: #cbd5e1;
+
+  /* ---- high-end frosted glassmorphism system ---- */
+  --br-card: rgba(9, 18, 36, 0.44);
+  --br-card-2: rgba(16, 32, 62, 0.56);
+  --br-border: rgba(255, 255, 255, 0.12);
+  --br-border-2: rgba(56, 189, 248, 0.38);
+  --br-glass: rgba(7, 15, 30, 0.52);
+  --br-glass-blur: blur(24px) saturate(180%);
+  --br-glass-border-top: rgba(255, 255, 255, 0.26);
+  --br-glass-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.55), inset 0 1px 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.35);
+  --br-glass-shadow-hover: 0 24px 60px -8px rgba(0, 0, 0, 0.65), 0 0 28px rgba(56, 189, 248, 0.22), inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.32);
+  --br-rain-tint: rgba(30, 58, 102, 0.35);
+
+  /* ---- electric storm accent ---- */
+  --br-accent: #38bdf8;
+  --br-accent-2: #60a5fa;
+  --br-accent-3: #a855f7;
+  --br-grad: linear-gradient(135deg, #38bdf8 0%, #60a5fa 40%, #818cf8 70%, #c084fc 100%);
+  --br-grad-soft: linear-gradient(135deg, rgba(56,189,248,.22), rgba(96,165,250,.18), rgba(168,85,247,.18));
+
+  /* ---- IMD severity in stormy contrast ---- */
+  --br-yellow: #facc15;
+  --br-orange: #fb923c;
+  --br-red: #ef4444;
+  --br-green: #10b981;
+
+  /* ---- type ---- */
+  --br-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Inter", "Segoe UI", system-ui, sans-serif;
+  --br-font-mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace;
+
+  /* ---- spacing scale ---- */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px;
+  --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px; --sp-10: 128px;
+
+  /* ---- radius ---- */
+  --r-sm: 8px; --r-md: 14px; --r-lg: 22px; --r-xl: 32px; --r-pill: 999px;
+
+  /* ---- shadows ---- */
+  --sh-1: 0 14px 38px rgba(0, 0, 0, 0.45);
+  --sh-2: 0 28px 84px rgba(0, 0, 0, 0.6);
+
+  /* ---- motion ---- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 0.45s;
+}
+
+/* ---- LIGHT ATMOSPHERIC GLASS DESIGN SYSTEM ---- */
+[data-theme="light"] {
+  /* Crisp daylight atmosphere with clean slate undertones */
+  --br-bg: #f8fafc;
+  --br-bg-2: #ffffff;
+  --br-bg-3: #f1f5f9;
+  --br-text: #0f172a;
+  --br-muted: #64748b;
+  --br-muted-2: #334155;
+
+  /* Frosted light glassmorphism */
+  --br-card: rgba(255, 255, 255, 0.86);
+  --br-card-2: rgba(248, 250, 252, 0.96);
+  --br-border: rgba(15, 23, 42, 0.09);
+  --br-border-2: rgba(2, 132, 199, 0.42);
+  --br-glass: rgba(255, 255, 255, 0.84);
+  --br-glass-blur: blur(24px) saturate(180%);
+  --br-glass-border-top: rgba(255, 255, 255, 1);
+  --br-glass-shadow: 0 14px 34px -8px rgba(15, 23, 42, 0.07), inset 0 1px 1px 0 rgba(255, 255, 255, 1), inset 0 -1px 1px 0 rgba(15, 23, 42, 0.03);
+  --br-glass-shadow-hover: 0 20px 48px -6px rgba(15, 23, 42, 0.13), 0 0 24px rgba(2, 132, 199, 0.16), inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 1);
+  --br-rain-tint: rgba(186, 230, 253, 0.22);
+
+  /* Electric daylight accents */
+  --br-accent: #0284c7;
+  --br-accent-2: #2563eb;
+  --br-accent-3: #7c3aed;
+  --br-grad: linear-gradient(135deg, #0284c7 0%, #2563eb 40%, #6366f1 70%, #9333ea 100%);
+  --br-grad-soft: linear-gradient(135deg, rgba(2,132,199,.14), rgba(37,99,235,.11), rgba(124,58,237,.11));
+
+  /* IMD severity in daylight contrast */
+  --br-yellow: #ca8a04;
+  --br-orange: #ea580c;
+  --br-red: #dc2626;
+  --br-green: #16a34a;
+
+  /* Shadows for light mode depth */
+  --sh-1: 0 10px 30px rgba(15, 23, 42, 0.06);
+  --sh-2: 0 24px 60px rgba(15, 23, 42, 0.1);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--br-bg);
+  color: var(--br-text);
+  font-family: var(--br-font);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: rgba(129, 140, 248, 0.35); }
+
+a { color: inherit; }
+
+button { font-family: inherit; }
+
+/* Gradient headline text */
+.grad-text {
+  background: var(--br-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Eyebrow label above section titles */
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--br-accent);
+  margin-bottom: var(--sp-4);
+}
+
+/* Scroll-reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  transition-delay: var(--reveal-delay, 0s);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Responsive Atmosphere Controller Widget */
+@media (max-width: 640px) {
+  .storm-atmosphere-controller {
+    bottom: 12px !important;
+    right: 12px !important;
+    max-width: calc(100vw - 24px) !important;
+    border-radius: 12px !important;
+    padding: 8px 12px !important;
+  }
+}
