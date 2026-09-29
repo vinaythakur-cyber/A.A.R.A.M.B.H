@@ -1,0 +1,51 @@
+# BhoomiRakshak — Bharat Convective Nowcasting (SIH26084)
+# One-command stack: FastAPI backend + React/Leaflet dashboard.
+#
+#   docker compose up --build
+#
+# Then open http://localhost:8080 (dashboard) — the bundled nginx proxies
+# /api/* and /ws/* to the backend, so no CORS configuration is needed.
+# Backend API directly: http://localhost:8000  (health: /api/health)
+
+services:
+  backend:
+    build: ./backend
+    container_name: bhoomirakshak-backend
+    ports:
+      - "8000:8000"
+    environment:
+      BH_DATA_DIR: /data
+      # Cycle interval (seconds) for the operational nowcast loop.
+      BH_CYCLE_INTERVAL_S: "300"
+    volumes:
+      # SQLite persistence (cycles.db) survives container restarts.
+      - backend-data:/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "python -c \"import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/api/health', timeout=5).status == 200 else 1)\"",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        # Browser-facing origin; nginx proxies /api/* and /ws/* to backend:8000.
+        VITE_API_URL: http://localhost:8080
+    container_name: bhoomirakshak-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  backend-data:
+    name: bhoomirakshak-data
